@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:working_with_gemini/feat/meanings/ui/meanings_view.dart';
-import 'package:working_with_gemini/route_navigation.dart';
+import 'package:working_with_gemini/app/route_navigation.dart';
 
 class PromptCard extends StatelessWidget {
   final String promptText;
