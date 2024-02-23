@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:working_with_gemini/feat/meanings/ui/meanings_view.dart';
-import 'package:working_with_gemini/app/route_navigation.dart';
+import 'package:flutter_svg/svg.dart';
 
 class PromptCard extends StatelessWidget {
   final String promptText;
-  const PromptCard({required this.promptText, super.key});
+  final VoidCallback onTap;
+  const PromptCard({required this.onTap, required this.promptText, super.key});
 
   @override
   Widget build(BuildContext context) {
+    // TODO: refactor with svg image
+    final svgImage = SvgPicture.asset("/Users/kwe/WorkingWithGemini/working_with_gemini/assets/lotus-flower-bloom.svg");
     return GestureDetector(
-      onTap: () async => await RouteNavigation.push(
-        context,
-        MeaningsView(
-          promptText: promptText,
-        ),
-      ),
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(
@@ -34,6 +31,7 @@ class PromptCard extends StatelessWidget {
                 promptText,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
+                  // color: Colors.purple,
                   fontSize: 18,
                   fontWeight: FontWeight.w800,
                 ),

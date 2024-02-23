@@ -46,6 +46,10 @@ List<String> getShuffledPrompts() {
     "Self Degradation",
     "Temperance",
     "Equanimity",
+    "vices",
+    "Greed",
+    "Untroubled",
+    "Serenity",
   ];
 
   prompts.shuffle();

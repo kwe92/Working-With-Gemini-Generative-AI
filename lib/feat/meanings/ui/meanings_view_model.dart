@@ -6,6 +6,8 @@ import 'package:working_with_gemini/feat/shared/services/gemini_model_service.da
 class MeaningsViewModel extends ExtendedChangeNotifier {
   String _promptText;
 
+  bool _disposed = false;
+
   String? get promptTextResponse => geminiModelService.promptTextResponse;
 
   List<Content> get _content => [Content.text("What is ${_promptText.toLowerCase()}?")];
@@ -28,4 +30,20 @@ class MeaningsViewModel extends ExtendedChangeNotifier {
       await ToastService.showSnackBar(err);
     }
   }
+
+  @override
+  void dispose() {
+    _disposed = true;
+    super.dispose();
+  }
+
+  @override
+  void notifyListeners() {
+    if (!_disposed) {
+      super.notifyListeners();
+    }
+  }
 }
+
+// TODO: notes on polymorphically changing dispose and notifyListeners when a really long asynchronous operation is running and the user navigates away from the view being loaded
+
