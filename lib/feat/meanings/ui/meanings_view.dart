@@ -13,7 +13,10 @@ class MeaningsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        // backgroundColor: Theme.of(context).colorScheme.primary,
+        // backgroundColor: Colors.blue[200],
+        backgroundColor: Colors.deepPurpleAccent[100],
+
         title: Text(
           promptText,
           style: const TextStyle(fontSize: 24),
@@ -25,7 +28,11 @@ class MeaningsView extends StatelessWidget {
           final model = context.watch<MeaningsViewModel>();
 
           return model.isBusy
-              ? const Center(child: CircularProgressIndicator())
+              ? Center(
+                  child: CircularProgressIndicator(
+                  // color: Colors.blue[200],
+                  color: Colors.deepPurpleAccent[100],
+                ))
               : Center(
                   child: Column(
                     children: [

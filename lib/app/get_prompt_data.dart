@@ -1,5 +1,14 @@
+import 'package:flutter/material.dart';
+
 List<String> getShuffledPrompts() {
   final List<String> prompts = [
+    "Loneliness",
+    "Hate",
+    "Righteousness",
+    "Vexation of Spirit",
+    "Psychological pain",
+    "Contentment",
+    "Emotional State",
     "Fear",
     "Compassion",
     "Anger",
@@ -46,13 +55,18 @@ List<String> getShuffledPrompts() {
     "Self Degradation",
     "Temperance",
     "Equanimity",
-    "vices",
+    "Vices",
     "Greed",
     "Untroubled",
     "Serenity",
+    "Gratitude",
+    "Gratefulness",
+    "Self Indulgence",
   ];
 
   prompts.shuffle();
+
+  debugPrint("length of prompts: ${prompts.length}");
 
   return prompts;
 }
