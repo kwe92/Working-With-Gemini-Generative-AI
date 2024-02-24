@@ -15,36 +15,56 @@ class DeeperMeaningsView extends StatelessWidget {
         create: (context) => DeeperMeaningsViewModel(),
         builder: (context, child) {
           final model = context.watch<DeeperMeaningsViewModel>();
-          return AnimatedOpacity(
-            opacity: model.isVisible ? 1.0 : 0.0,
-            duration: const Duration(milliseconds: 500),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: GridView.builder(
-                itemCount: model.prompts.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  childAspectRatio: (5 / 8),
-                ),
-                itemBuilder: (context, index) => PromptCard(
-                  onTap: () async {
-                    model.setVisibility(false);
-
-                    await RouteNavigation.pushWithTransition(
-                      context,
-                      MeaningsView(
-                        promptText: model.prompts[index],
-                      ),
-                    );
-
-                    model.setVisibility(true);
-                  },
-                  promptText: model.prompts[index],
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 62),
+                child: AnimatedOpacity(
+                  opacity: model.isVisible ? 1.0 : 0.0,
+                  duration: const Duration(milliseconds: 500),
+                  child: const Text(
+                    "Deeper Meaning",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
+                  ),
                 ),
               ),
-            ),
+              Expanded(
+                child: AnimatedOpacity(
+                  opacity: model.isVisible ? 1.0 : 0.0,
+                  duration: const Duration(milliseconds: 500),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: GridView.builder(
+                      itemCount: model.prompts.length,
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 16,
+                        mainAxisSpacing: 16,
+                        childAspectRatio: (5 / 8),
+                      ),
+                      itemBuilder: (context, index) => PromptCard(
+                        onTap: () async {
+                          model.setVisibility(false);
+
+                          await RouteNavigation.pushWithTransition(
+                            context,
+                            MeaningsView(
+                              promptText: model.prompts[index],
+                            ),
+                          );
+
+                          model.setVisibility(true);
+                        },
+                        promptText: model.prompts[index],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           );
 
           // Padding(
